@@ -19,31 +19,14 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
 
 
     it('Deve adicionar um produto no carrinho - Usando comando customizados ', () => {
-        cy.addProdutos('Abominable Hoodie', 'S', 'Blue', 3)
+        let carrinho = 8
 
+        cy.addProdutos('produtos/', 'Abominable Hoodie', 'S', 'Blue', '3')
+        cy.addProdutos('produtos/page/2/', 'Bruno Compete Hoodie', 'M', 'Blue', '3')
+        cy.addProdutos('produtos/page/2/', 'Caesar Warm-Up Pant', '33', 'Black', '1')
+        cy.addProdutos('produtos/page/2/', 'Cassia Funnel Sweatshirt', 'S', 'Orange', '1')
+        cy.get('.dropdown-toggle > .mini-cart-items').should('contain', carrinho)
 
-    });
-
-    it.only('Deve adicionar o 2° produto no carrinho', () => {
-
-        cy.addProdutos('Abominable Hoodie', 'M', 'Blue', 3)
-    });
-
-    it('Deve adicionar o 3° produto no carrinho ', () => {
-        let quantidade = 2
-
-        cy.addProduto2('Autumn Pullie', 'L', 'Red', '2')
-        cy.get('.woocommerce-message').should('contain', quantidade)
-    });
-
-    it('Deve adicionar o 4° produto no carrinho', () => {
-        let quantidade = 1
-        cy.addProduto2('Caesar Warm-Up Pant', '33', 'Black', '1')
-        cy.get('.woocommerce-message').should('contain', quantidade)
-    });
-
-
-    it('Deve preencher com sucesso o checkout ', () => {
         checkout.editarEndereço(
             dadosEndereço[0].nome,
             dadosEndereço[0].sobrenome,
@@ -56,6 +39,9 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
             dadosEndereço[0].telefone,
             dadosEndereço[0].email
         )
+        cy.formaDePagamento('cheque')
 
+        cy.get('.woocommerce-notice').should('contain', 'Obrigado. Seu pedido foi recebido')
     });
-})
+});
+

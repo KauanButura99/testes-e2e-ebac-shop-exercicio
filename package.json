@@ -8,7 +8,7 @@
     "cy:open": "npx cypress open",
     "cy:run": "npx cypress run",
     "cy:dashboard": "",
-    "cy:report": ""
+    "cy:report": "npx cypress run --record --key 58ca3d34-8b95-4c63-b190-7bedbee831b2"
   },
   "repository": {
     "type": "git",
