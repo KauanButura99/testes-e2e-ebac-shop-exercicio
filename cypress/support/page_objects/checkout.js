@@ -16,13 +16,7 @@ class CheckoutPage {
     cy.get('#billing_phone').clear().type(tel)
     cy.get('#billing_email').clear().type(email)
 
-
-
-
-
-
   }
-
 }
 
 export default new CheckoutPage()
