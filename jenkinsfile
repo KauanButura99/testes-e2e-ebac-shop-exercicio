@@ -2,19 +2,17 @@ pipeline{
   agent any
 
   stages{
-    stage("setup"){
+    stage("configuração"){
       steps{
-        git branch: 'main', url: 'https://github.com/KauanButura99/testes-e2e-ebac-shop-exercicio.git'
         sh "npm install"
       }
     }
 
-    stage("Test"){
+    stage("build"){
       steps{
-        sh 'NO_COLOR=1 npm run cy:run-ci'
+        sh "npm run cy:run"
       }
     }
-
   }
 
 }

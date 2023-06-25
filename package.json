@@ -6,6 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "cy:open": "npx cypress open",
+    "start": "http://lojaebac.ebaconline.art.br/",
     "cy:run": "npx cypress run",
     "cy:dashboard": "",
     "cy:report": "npx cypress run --record --key 58ca3d34-8b95-4c63-b190-7bedbee831b2",
