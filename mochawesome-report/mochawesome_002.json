@@ -1,0 +1,109 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 0,
+    "pending": 0,
+    "failures": 1,
+    "start": "2023-06-26T15:03:14.533Z",
+    "end": "2023-06-26T15:04:48.766Z",
+    "duration": 94233,
+    "testsRegistered": 1,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "c19317cc-4e60-428f-9966-d1a3d176096e",
+      "title": "",
+      "fullFile": "cypress\\e2e\\e2e.cy.js",
+      "file": "cypress\\e2e\\e2e.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "47c49169-d357-4b72-9844-09959ddd5576",
+          "title": "Exercicio - Testes End-to-end - Fluxo de pedido",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Deve adicionar um produto no carrinho - Usando comando customizados ",
+              "fullTitle": "Exercicio - Testes End-to-end - Fluxo de pedido Deve adicionar um produto no carrinho - Usando comando customizados ",
+              "timedOut": null,
+              "duration": 93715,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "let carrinho = 8;\ncy.addProdutos('produtos/', 'Abominable Hoodie', 'S', 'Blue', '3');\ncy.addProdutos('produtos/page/2/', 'Bruno Compete Hoodie', 'M', 'Blue', '3');\ncy.addProdutos('produtos/page/2/', 'Caesar Warm-Up Pant', '33', 'Black', '1');\ncy.addProdutos('produtos/page/2/', 'Cassia Funnel Sweatshirt', 'S', 'Orange', '1');\ncy.get('.dropdown-toggle > .mini-cart-items').should('contain', carrinho);\n_checkout.default.editarEndereço(dadosEndereço[0].nome, dadosEndereço[0].sobrenome, dadosEndereço[0].empresa, dadosEndereço[0].pais, dadosEndereço[0].endereço, dadosEndereço[0].cidade, dadosEndereço[0].estado, dadosEndereço[0].cep, dadosEndereço[0].telefone, dadosEndereço[0].email);\ncy.formaDePagamento('cheque');\ncy.get('.woocommerce-notice').should('contain', 'Obrigado. Seu pedido foi recebido');",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 4000ms: expected '<span.mini-cart-items>' to contain 8",
+                "estack": "AssertionError: Timed out retrying after 4000ms: expected '<span.mini-cart-items>' to contain 8\n    at Context.eval (webpack:///./cypress/e2e/e2e.cy.js:28:54)",
+                "diff": null
+              },
+              "uuid": "1fc0ba29-8409-4c66-9815-f2ab5d23db4d",
+              "parentUUID": "47c49169-d357-4b72-9844-09959ddd5576",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "1fc0ba29-8409-4c66-9815-f2ab5d23db4d"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 93715,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "mochawesome-report",
+        "overwrite": false,
+        "html": true,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

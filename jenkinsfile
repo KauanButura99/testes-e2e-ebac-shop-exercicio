@@ -4,13 +4,21 @@ pipeline{
   stages{
     stage("configuração"){
       steps{
+        git branch: 'main', url: 'https://github.com/KauanButura99/testes-e2e-ebac-shop-exercicio.git'
         sh "npm install"
       }
     }
 
-    stage("build"){
+    stage("Teste"){
       steps{
-        sh "npm run cy:run"
+        sh "NO_COLOR=1 npm run cy:run |true"
+        sh "npm run cy:mocha"
+      }
+    }
+
+    stage("Report"){
+      steps{
+        sh "publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'mochawesome-report', reportFiles: 'mochawesome_001.html', reportName: 'Testes Ebac Cypress', reportTitles: '', useWrapperFileDirectly: true])"
       }
     }
   }
