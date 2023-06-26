@@ -15,12 +15,6 @@ pipeline{
         sh "npm run cy:mocha"
       }
     }
-
-    stage("Report"){
-      steps{
-        sh "publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'mochawesome-report', reportFiles: 'mochawesome_001.html', reportName: 'Testes Ebac Cypress', reportTitles: '', useWrapperFileDirectly: true])"
-      }
-    }
   }
 
 }
