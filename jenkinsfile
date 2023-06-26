@@ -11,7 +11,7 @@ pipeline{
 
     stage("Teste"){
       steps{
-        sh "NO_COLOR=1 npm run cy:run |true"
+        sh "NO_COLOR=1 npm run cy:run-ci| true"
         sh "npm run cy:mocha"
       }
     }
