@@ -1,25 +1,21 @@
-pipeline{
-  agent any
+pipeline {
+    agent any 
 
-  stages{
-    stage("configuração"){
-      steps{
-        git branch: 'main', url: 'https://github.com/KauanButura99/testes-e2e-ebac-shop-exercicio.git'
-        sh "npm install"
-      }
+    stages {
+        stage('Build') { 
+            steps {
+                sh('npm install')
+            }
+        }
+        stage('Test') { 
+            steps {
+                sh('npm run cy:run')
+            }
+        }
+        stage('Deploy') { 
+            steps {
+                publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'mochawesome-report', reportFiles: 'mochawesome.html', reportName: 'EBAC- Report', reportTitles: '', useWrapperFileDirectly: true])
+            }
+        }
     }
-
-    stage("Teste"){
-      steps{
-        sh "NO_COLOR=1 npm run cy:run-ci| true"
-        sh "npm run cy:mocha"
-      }
-    }
-
-    stage('Deploy') {
-      steps {
-        publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'mochawesome-report', reportFiles: 'mochawesome_001', reportName: 'EBAC Report', reportTitles: '', useWrapperFileDirectly: true])
-      }
-    }
-  }
 }
