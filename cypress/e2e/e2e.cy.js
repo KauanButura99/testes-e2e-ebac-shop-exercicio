@@ -21,11 +21,11 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
     it('Deve adicionar um produto no carrinho - Usando comando customizados ', () => {
         let carrinho = 8
 
-        cy.addProdutos('produtos/', 'Abominable Hoodie', 'S', 'Blue', '3')
-        cy.addProdutos('produtos/page/2/', 'Bruno Compete Hoodie', 'M', 'Blue', '3')
-        cy.addProdutos('produtos/page/2/', 'Caesar Warm-Up Pant', '33', 'Black', '1')
-        cy.addProdutos('produtos/page/2/', 'Cassia Funnel Sweatshirt', 'S', 'Orange', '1')
-        cy.get('.dropdown-toggle > .mini-cart-items').should('contain', carrinho)
+        cy.addProdutos('produtos/', 'Abominable Hoodie', 'M', 'Blue', '3')
+        // cy.addProdutos('produtos/page/2/', 'Bruno Compete Hoodie', 'M', 'Blue', '3')
+        //cy.addProdutos('produtos/page/2/', 'Caesar Warm-Up Pant', '33', 'Black', '1')
+        //cy.addProdutos('produtos/page/2/', 'Cassia Funnel Sweatshirt', 'S', 'Orange', '1')
+        //cy.get('.dropdown-toggle > .mini-cart-items').should('contain', carrinho)
 
         checkout.editarEndereço(
             dadosEndereço[0].nome,

@@ -15,6 +15,11 @@ pipeline{
         sh "npm run cy:mocha"
       }
     }
-  }
 
+    stage('Deploy') {
+      steps {
+        publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'mochawesome-report', reportFiles: 'mochawesome_001', reportName: 'EBAC Report', reportTitles: '', useWrapperFileDirectly: true])
+      }
+    }
+  }
 }
